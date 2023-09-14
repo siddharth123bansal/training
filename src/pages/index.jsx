@@ -1,18 +1,30 @@
-import Header from "@/components/Headers";
+import React, { useEffect, useState } from 'react'; 
 import { Inter } from "next/font/google";
 import MovieList from "./MoviesList";
+import Headers from '@/components/Headers';
 const inter = Inter({ subsets: ["latin"] });
+const axios = require('axios');
+function IndexPage() {
+  const [movieData, setMovieData] = useState([]);
 
-export default function Home() {
+  useEffect(() => {
+    // Fetch movie data from your API
+    axios.get('http://localhost:3001/movies')
+      .then((response) => {
+        setMovieData(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching movie data:', error);
+      });
+  }, []);
+
   return (
-    <>
     <div>
-      <Header />
-      <h1 className="text-7xl text-red-500 m-10">Movies</h1>
+    <Headers/>
+      <h1 className='text-7xl text-red-500 m-10'>Movies List</h1>
+      <MovieList dataarray={movieData} />
     </div>
-    <div>
-        <MovieList />
-      </div>
-    </>
   );
 }
+
+export default IndexPage;
