@@ -1,9 +1,37 @@
 // components/ContactForm.js
 import React from 'react';
-
+import axios from 'axios';
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    const film = e.target.elements.filmname.value;
+    const duration = parseInt(e.target.elements.duration.value, 10);
+    const releasedate = e.target.elements.timestamp.value;
+    const description = e.target.elements.description.value;
+    const type = e.target.elements.category.value;
+    const country = e.target.elements.country.value;
+    const formattedTimestamp = new Date(releasedate).toISOString();
+    const data = {
+      film,
+      duration,
+      releasedate: formattedTimestamp,
+      description,
+      type,
+      country,
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:3001/movies/add', data);
+      console.log('Response:', response.data);
+      alert('Film created successfully!');
+      e.target.reset();
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while creating the film.');
+    }
+  };
 const ContactForm = () => {
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto max-w-md">
+    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto max-w-md" onSubmit={handleSubmit}>
       <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Film Information</h2>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="filmname">
@@ -82,9 +110,8 @@ const ContactForm = () => {
           Submit
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
 export default ContactForm;
-    
