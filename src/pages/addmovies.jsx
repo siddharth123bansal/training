@@ -8,8 +8,7 @@ export default function AddMovie() {
     return (
         <>
         <Headers/>
-        <div className="container mx-auto mt-8">
-          <h1 className="text-2xl font-semibold mb-4">Contact Us</h1>
+        <div className="container mt-10">
           <ContactForm />
         </div>
         </>
