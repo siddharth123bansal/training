@@ -1,6 +1,7 @@
 // src/pages/MovieList.jsx
 import React from 'react';
 import MovieCard from '@/components/MoviesCard';
+import Link from 'next/link';
 function formatDateToDdMmYyyy(dateString) {
   const date = new Date(dateString);
 
@@ -16,7 +17,9 @@ const MovieList = ({ dataarray }) => {
   return (
     <div className="movie-list" style={{ display: 'flex',marginLeft:'20px', flexWrap: 'wrap' }}>
       {dataarray.map((movie) => (
+        <Link href={`/addmovies/${movie.filmid}`} key={movie.filmid}>
         <MovieCard key={movie.filmid} title={movie.film} posterUrl={url} releaseDate={formatDateToDdMmYyyy(movie.releasedate)} description={movie.description}/>
+        </Link>
       ))}
     </div>
   );

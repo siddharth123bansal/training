@@ -1,27 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Headers from '@/components/Headers';
 import { useRouter } from 'next/router';
-import MovieList from '../MoviesList';
 import axios from 'axios';
 import MovieDetails from '../MoviesDetails';
-// const data = {
-//   country: "Bharat",
-//   description: "hello world",
-//   directorData: [
-//     { name: "Director 1" },
-//     { name: "Director 2" },
-//   ],
-//   duration: 3,
-//   film: "Api Test",
-//   filmid: 1,
-//   releasedate: "2023-09-28T14:23:15.000Z",
-//   type: "hollywood",
-//   views: null,
-// };
 function IDpage() {
   const [movieData, setMovieData] = useState([]);
   const router = useRouter();
-
   useEffect(() => {
     const id = parseInt(router.query.id);
     if (!isNaN(id)) {
@@ -38,11 +22,9 @@ function IDpage() {
         });
     }
   }, [router.query.id]);
-
   useEffect(() => {
     console.log("Updated movieData:", movieData);
   }, [movieData]);
-
   return (
     <div>
       <Headers />
@@ -51,5 +33,4 @@ function IDpage() {
     </div>
   );
 }
-
 export default IDpage;
