@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'; 
-import { Inter } from "next/font/google";
+import React, { useEffect, useState } from 'react';
 import MovieList from "./MoviesList";
 import Headers from '@/components/Headers';
-const inter = Inter({ subsets: ["latin"] });
 const axios = require('axios');
 function IndexPage() {
   const [movieData, setMovieData] = useState([]);
