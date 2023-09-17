@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Swal from 'sweetalert2';
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "2-digit", day: "2-digit" };
   return new Date(dateString).toLocaleDateString('en-US', options);
@@ -7,7 +8,7 @@ const formatDate = (dateString) => {
 
 const MovieDetails = ({ movie }) => {
   const [isFormVisible, setFormVisible] = useState(false);
-  const [updatedMovie, setUpdatedMovie] = useState({ ...movie });
+  const [updatedMovie, setUpdatedMovie] = useState({  ...movie });
 
   const toggleForm = () => {
     setFormVisible(!isFormVisible);
@@ -42,19 +43,57 @@ const MovieDetails = ({ movie }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Updated Movie Details:", updatedMovie);
+    const film = e.target.elements.film.value;
+    const description = e.target.elements.description.value;
+    const duration = parseInt(e.target.elements.duration.value, 10);
+    const type = e.target.elements.type.value;
+    const country = e.target.elements.country.value;
+    const data={
+      film,
+      description,
+      duration,
+      type,
+      country,
+    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Your movie has been updated',
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, update it!',
+      cancelButtonText: 'No, cancel!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("Updated Movie Details:", updatedMovie);
     const { directordata, ...movieDataWithoutDirectors } = updatedMovie;
+    console.log("movies without directors", data)
     axios
-      .put(`http://localhost:3001/update/movie/${movie.filmid}`, movieDataWithoutDirectors)
+      .put(`http://localhost:3001/update/movie/${movie.filmid}`, data)
       .then((response) => {
-        alert("Movie details updated successfully");
+        // Swal.fire({
+        //   title: 'Movie Updated!',
+        //   showClass: {
+        //     popup: 'animate__animated animate__fadeInDown'
+        //   },
+        //   hideClass: {
+        //     popup: 'animate__animated animate__fadeOutUp'
+        //   }
+        // })
+        alert("Movie updated successfully");
+        window.location.reload();
         console.log("Updated Movie Details:", response.data);
       })
       .catch((error) => {
         alert(error);
         console.error("Error updating movie data:", error);
       });
-    setFormVisible(false);
+        setFormVisible(false);
+      } else if (result.isDenied) {
+        Swal.fire('Movie update canceled', '', 'info');
+        setFormVisible(false);
+      }
+    });
+    
   };
 
   if (!movie) {
@@ -69,7 +108,7 @@ const MovieDetails = ({ movie }) => {
         <img
           className="w-[340px] h-[188px] object-cover"
           alt=""
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_zb4Tljpe8TLrYAuPGBiWXWkkpvV7dGjzGA&usqp=CAU"
+          src={movie.image}
         />
         <div className="text-[20px] font-semibold">{film}</div>
         <div style={{marginLeft:'10px'}} className="text-base font-semibold text-dimgray text-left flex items-center">
@@ -100,7 +139,7 @@ const MovieDetails = ({ movie }) => {
       </div>
       {isFormVisible && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white p-4 rounded-lg shadow-md">
+          <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-md">
             <h2 className="text-2xl font-semibold mb-4">Update Movie Details</h2>
             <form onSubmit={handleFormSubmit}>
             <div className="mb-4">

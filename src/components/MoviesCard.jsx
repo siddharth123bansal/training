@@ -4,6 +4,7 @@ const MovieCard = ({ title, releaseDate, posterUrl, description }) => {
   const cardStyle = {
     border: '2px solid #fff',
     borderRadius: '15px',
+    
     marginLeft: '10px',
     padding: '10px',
     marginTop: '10px',
@@ -17,6 +18,7 @@ const MovieCard = ({ title, releaseDate, posterUrl, description }) => {
   const imageStyle = {
     maxWidth: '100%',
     height: 'auto',
+    width:'280px',
     borderRadius: '10px',
   };
 

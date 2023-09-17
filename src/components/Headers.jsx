@@ -20,10 +20,10 @@ const Headers = () => {
               <Link href="/addmovies">Add Movies</Link>
             </li>
             <li>
-              <Link href="/">Movies</Link>
+              <Link href="/directors">Directors</Link>
             </li>
             <li>
-              <Link href="/">new & popular</Link>
+              <Link href="/">Add Directors</Link>
             </li>
             <li>
               <Link href="/">My list</Link>
