@@ -19,7 +19,7 @@ function IndexPage() {
   return (
     <div>
     <Headers/>
-      <h1 className='text-7xl text-red-500 m-10'>Movies List</h1>
+      <h1 className='text-7xl text-red-500 m-10'>Movies</h1>
       <MovieList dataarray={movieData} />
     </div>
   );
