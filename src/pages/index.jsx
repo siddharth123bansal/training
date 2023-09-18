@@ -6,7 +6,6 @@ const axios = require('axios');
 function IndexPage() {
   const [movieData, setMovieData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     axios.get('https://movies-7hu0.onrender.com/movies')
       .then((response) => {
@@ -18,7 +17,6 @@ function IndexPage() {
         console.error('Error fetching movie data:', error);
       });
   }, []);
-
   return (
     <>
       <Headers />
