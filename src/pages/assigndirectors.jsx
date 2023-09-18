@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { redirect } from 'next/dist/server/api-utils';
 import Headers from '@/components/Headers';
+import Loading from '@/components/Loading';
 
 const DirectorAssignment = () => {
   const [movies, setMovies] = useState([]);
   const [directors, setDirectors] = useState([]);
   const [selectedMovieId, setSelectedMovieId] = useState('');
   const [selectedDirectorId, setSelectedDirectorId] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios.get('http://localhost:3001/movies')
@@ -21,6 +23,9 @@ const DirectorAssignment = () => {
     axios.get('http://localhost:3001/directors')
         .then((response) => {
             setDirectors(response.data);
+            setTimeout(() => {
+                setIsLoading(false);
+              }, 2000);
             })
         .catch((error) => {
             console.error('Error fetching director data:', error);
@@ -49,9 +54,10 @@ const DirectorAssignment = () => {
         directorid: parseInt(selectedDirectorId),
     };
     console.log(data)
-    axios.post('http://localhost:3001/assigndirectors', data)
+    axios.post('https://movies-7hu0.onrender.com/assigndirectors', data)
       .then((response) => {
         alert('Assignment successful');
+
       })
       .catch((error) => {
         alert('Assignment failed');
@@ -62,6 +68,7 @@ const DirectorAssignment = () => {
   return (
     <>
     <Headers/>
+    {isLoading?(<Loading/>):(
     <div className="flex justify-center items-center h-screen">
     <div className="bg-white p-6 rounded-lg shadow-lg">
       <h1 className="text-2xl font-bold mb-4">Assign Director to Movie</h1>
@@ -111,7 +118,7 @@ const DirectorAssignment = () => {
       </form>
     </div>
   </div>
-  
+    )}
 </>
   );
 };

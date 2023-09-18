@@ -22,7 +22,7 @@ const DirectorForm = ({ onAddDirector }) => {
     // onAddDirector(directorData);
     console.log(directorData);
     directorData.age=parseInt(directorData.age);
-    axios.post('http://localhost:3001/directors/add', directorData)
+    axios.post('https://movies-7hu0.onrender.com/directors/add', directorData)
     .then((response) => {
         console.log(response);
         alert("Director Added Successfully");

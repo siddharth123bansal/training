@@ -10,7 +10,7 @@ function IDpage() {
   useEffect(() => {
     const id = parseInt(router.query.id);
     if (!isNaN(id)) {
-      const url = `http://localhost:3001/movies/${id}`;
+      const url = `https://movies-7hu0.onrender.com/movies/${id}`;
       console.log("url", url);
       axios
         .get(url)

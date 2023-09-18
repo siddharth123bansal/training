@@ -7,7 +7,7 @@ function IndexPage() {
   const [movieData, setMovieData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-      axios.get('http://localhost:3001/movies')
+      axios.get('https://movies-7hu0.onrender.com/movies')
         .then((response) => {
           setMovieData(response.data);
           setTimeout(() => {

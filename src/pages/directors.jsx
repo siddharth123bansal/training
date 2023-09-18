@@ -9,7 +9,7 @@ const DirectorsPage = () => {
     const [directors,setDirectors]=useState([])
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        axios.get('http://localhost:3001/directors')
+        axios.get('https://movies-7hu0.onrender.com/directors')
         .then((response) => {
             setDirectors(response.data);
             setTimeout(() => {

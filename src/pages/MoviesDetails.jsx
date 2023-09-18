@@ -22,7 +22,7 @@ const MovieDetails = ({ movie }) => {
 
   const deleteMovie = () => {
     axios
-      .delete(`http://localhost:3001/delete/movie/${movie.filmid}`)
+      .delete(`https://movies-7hu0.onrender.com/delete/movie/${movie.filmid}`)
       .then((response) => {
         alert("Movie deleted successfully");
         console.log("Deleted", response.data);
@@ -69,7 +69,7 @@ const MovieDetails = ({ movie }) => {
     const { directordata, ...movieDataWithoutDirectors } = updatedMovie;
     console.log("movies without directors", data)
     axios
-      .put(`http://localhost:3001/update/movie/${movie.filmid}`, data)
+      .put(`https://movies-7hu0.onrender.com/update/movie/${movie.filmid}`, data)
       .then((response) => {
         // Swal.fire({
         //   title: 'Movie Updated!',
