@@ -12,7 +12,7 @@ const DirectorAssignment = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/movies')
+    axios.get('https://movies-7hu0.onrender.com/movies')
         .then((response) => {
             setMovies(response.data);
             })
@@ -20,7 +20,7 @@ const DirectorAssignment = () => {
             console.error('Error fetching director data:', error);
             }
         );
-    axios.get('http://localhost:3001/directors')
+    axios.get('https://movies-7hu0.onrender.com/directors')
         .then((response) => {
             setDirectors(response.data);
             setTimeout(() => {
