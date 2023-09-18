@@ -16,6 +16,7 @@ function IDpage() {
         .get(url)
         .then((response) => {
           const dataArray = Array.isArray(response.data) ? response.data : [response.data];
+          console.log("moviesdata",dataArray)
           setMovieData(dataArray);
         })
         .catch((error) => {

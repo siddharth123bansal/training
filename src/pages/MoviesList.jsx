@@ -17,8 +17,8 @@ const MovieList = ({ dataarray }) => {
   return (
     <div className="movie-list" style={{ display: 'flex',marginLeft:'20px', flexWrap: 'wrap' }}>
       {dataarray.map((movie) => (
-        <Link href={`/addmovies/${movie.filmid}`} key={movie.filmid}>
-        <MovieCard key={movie.filmid} title={movie.film} posterUrl={movie.image} releaseDate={formatDateToDdMmYyyy(movie.releasedate)} description={movie.description}/>
+        <Link href={`/addmovies/${movie.id}`} key={movie.id}>
+        <MovieCard key={movie.id} title={movie.film} posterUrl={movie.image} releaseDate={formatDateToDdMmYyyy(movie.releasedate)} description={movie.description}/>
         </Link>
       ))}
     </div>

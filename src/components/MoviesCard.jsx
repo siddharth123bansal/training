@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MovieCard = ({ title, releaseDate, posterUrl, description }) => {
-  const cardStyle = {
+  const cardStyle = { 
     border: '2px solid #fff',
     borderRadius: '15px',
     

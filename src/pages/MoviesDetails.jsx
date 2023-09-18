@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Image from "next/image";
 import Swal from 'sweetalert2';
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "2-digit", day: "2-digit" };
@@ -103,21 +104,25 @@ const MovieDetails = ({ movie }) => {
   const { film, description, releasedate } = movie;
 
   return (
-    <div className="relative bg-white inline-block text-center text-sm text-black font-inter mx-5">
+    <div className="relative bg-white inline-block text-center text-sm text-black font-inter mx-5 min-w-full min-h-screen">
       <div className="w-auto h-auto">
         <img
-          className="w-[340px] h-[188px] object-cover"
+          className=" w-full h-[550px]"
           alt=""
+          // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaiId108cToys7rLOWdlOBTnL_jrWG5LQKw&usqp=CAU"
           src={movie.image}
+          // width={1200}
+          // height={300}
+          objectFit="cover"
         />
         <div className="text-[20px] font-semibold">{film}</div>
-        <div style={{marginLeft:'10px'}} className="text-base font-semibold text-dimgray text-left flex items-center">
-         Releasing on {formatDate(releasedate)}
+        <div className="text-[16px] mt-2 font-semibold text-dimgray ">
+         Releasing Date {formatDate(releasedate)}
         </div>
-        <p style={{marginLeft:'10px'}}className="leading-[20px] text-darkslategray text-left w-80">
+        <p className=" text-[16px] mt-2 text-dimgray ">
           {description}
         </p>
-        <p style={{marginLeft:'10px'}} className="leading-[20px] text-darkslategray text-left w-80"><strong></strong>
+        <p className=" text-[16px] mt-2 text-dimgray "><strong>Directors: </strong>
           {movie.directorData.map((director) => director.director.name).join(", ")}
         </p>
         

@@ -23,14 +23,11 @@ const Headers = () => {
               <Link href="/directors">Directors</Link>
             </li>
             <li>
-              <Link href="/">Add Directors</Link>
+              <Link href="/directors/adddirector">Add Directors</Link>
             </li>
             <li>
-              <Link href="/">My list</Link>
-            </li>
-            <li>
-              <Link href="/">Browse by language</Link>
-            </li>
+            <Link href="/assigndirectors">Assign Directors</Link>
+          </li>
           </ul>
         </nav>
       </div>
