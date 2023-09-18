@@ -9,6 +9,9 @@ function formatDateToDdMmYyyy(dateString) {
   return `${day} - ${month} - ${year}`;
 }
 const MovieList = ({ dataarray }) => {
+  if (!dataarray || dataarray.length === 0) {
+    return <div>No movies available.</div>;
+  }
    return (
     <div className="movie-list" style={{ display: 'flex',marginLeft:'20px', flexWrap: 'wrap' }}>
       {dataarray.map((movie) => (
