@@ -28,7 +28,7 @@ const DirectorsPage = () => {
     {isLoading?(<Loading/>):(
     <div className="directors-page">
     <h1 className='text-7xl text-red-500 m-5'>Directors</h1>
-      <div className="director-list flex">
+      <div className="director-list flex flex-wrap">
         {directors.map((director, index) => (
           <DirectorCard key={index} director={director} />
         ))}
