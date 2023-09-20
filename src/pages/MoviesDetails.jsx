@@ -69,7 +69,7 @@ const MovieDetails = ({ movie }) => {
         console.log("Movie Details id is:",movie.id)
     console.log("movies without directors", data)
     axios
-      .put(`https://movies-7hu0.onrender.com/update/movie/${movie.id}`, data)
+      .put(`https://movies-7hu0.onrender.com/update/movie/${updatedMovie.id}`, data)
       .then((response) => {
         // Swal.fire({
         //   title: 'Movie Updated!',
