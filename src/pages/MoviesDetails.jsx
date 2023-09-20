@@ -66,7 +66,7 @@ const MovieDetails = ({ movie }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log("Updated Movie Details:", updatedMovie);
-        console.log("Movie Details:",movie)
+        console.log("Movie Details id is:",movie.id)
     console.log("movies without directors", data)
     axios
       .put(`https://movies-7hu0.onrender.com/update/movie/${movie.id}`, data)
