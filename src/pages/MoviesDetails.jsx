@@ -22,7 +22,7 @@ const MovieDetails = ({ movie }) => {
 
   const deleteMovie = () => {
     axios
-      .delete(`https://movies-7hu0.onrender.com/delete/movie/${movie.id}`)
+      .delete(`https://movies-7hu0.onrender.com/delete/movie/${updatedMovie.id}`)
       .then((response) => {
         alert("Movie deleted successfully");
         console.log("Deleted", response.data);

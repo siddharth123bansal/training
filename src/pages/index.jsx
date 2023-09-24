@@ -17,6 +17,7 @@ function IndexPage() {
         console.error('Error fetching movie data:', error);
       });
   }, []);
+
   return (
     <>
       <Headers />
